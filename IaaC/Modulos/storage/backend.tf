@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket  = "tf_backend"
+    bucket  = "prueba_tf_backend"
     prefix  = "tfstate-storage"
   }
 }
