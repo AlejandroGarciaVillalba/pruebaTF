@@ -1,5 +1,5 @@
 variable "id_project_platform" {
-  description = "ID del proyecto de la Plataforma en GCP"
+  description = "ID del proyecto GCP de Plataforma"
   type        = string
 }
  
@@ -8,7 +8,7 @@ variable "region" {
   type        = string
 }
  
-variable "name_bucket_raw" {
-  description = "Nombre del bucket raw"
+variable "name_datafusion_platform" {
+  description = "Nombre de la instancia de datafusion en Plataforma "
   type        = string
 }

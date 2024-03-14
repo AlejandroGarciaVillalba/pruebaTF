@@ -4,5 +4,9 @@ steps:
     id: 'storage'
   
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--config', 'IaaC/Modulos/datafusion/cloudbuild.yaml', '.']
-    id: 'datafusion'
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/datafusion_platform/cloudbuild.yaml', '.']
+    id: 'datafusion_platform'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/datafusion_staging/cloudbuild.yaml', '.']
+    id: 'datafusion_staging'

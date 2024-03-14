@@ -1,9 +1,11 @@
-id_project = "pruebaparrondoyvillalba"
+id_project_platform = "pruebaparrondoyvillalba"
 
-id_project1 = "stagingparrondoyvillalba"
+id_project_staging = "stagingparrondoyvillalba"
 
 region = "europe-southwest1"
  
-name_bucket1 = "bucket1_parrvill"
+name_bucket_raw = "bucket_raw_parrvill"
 
-name_datafusion1 = "datafusioncbparrvill"
+name_datafusion_platform = "datafusion_platform_cbparrvill"
+
+name_datafusion_staging = "datafusion_staging_cbparrvill"
