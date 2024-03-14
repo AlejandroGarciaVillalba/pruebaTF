@@ -6,6 +6,6 @@ region = "europe-southwest1"
  
 name_bucket_raw = "bucket_raw_parrvill"
 
-name_datafusion_platform = "datafusion_platformparrvill"
+name_datafusion_platform = "datafusion-platform-parrvill"
 
-name_datafusion_staging = "datafusion_stagingparrvill"
+name_datafusion_staging = "datafusion-staging-parrvill"
