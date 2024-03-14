@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--config', 'IaaC/Modulos/storage/cloudbuild.yaml', '.']
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/storage/cloudbuild.yaml', '.']
     id: 'raw_bucket'
 
   - name: 'gcr.io/cloud-builders/gcloud'
