@@ -1,12 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/storage/cloudbuild.yaml', '.']
-    id: 'storage'
+    id: 'raw_bucket'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/storage/cloudbuild.yaml', '.']
+    id: 'storage_platform'
   
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--config', 'IaaC/Modulos/datafusion_platform/cloudbuild.yaml', '.']
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/datafusion_platform/cloudbuild.yaml', '.']
     id: 'datafusion_platform'
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--config', 'IaaC/Modulos/datafusion_staging/cloudbuild.yaml', '.']
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/datafusion_staging/cloudbuild.yaml', '.']
     id: 'datafusion_staging'

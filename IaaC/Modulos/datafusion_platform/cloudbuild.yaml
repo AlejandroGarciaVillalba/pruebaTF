@@ -1,8 +1,0 @@
-steps:
-  - name: 'hashicorp/terraform:1.6.6'
-    args: ['init']
-    dir: 'IaaC/Modulos/datafusion_platform'
-   
-  - name: 'hashicorp/terraform:1.6.6'
-    args: ['apply', '-compact-warnings', '-auto-approve', '-var-file=../../Entornos/dev/main.tfvars']
-    dir: 'IaaC/Modulos/datafusion_platform'

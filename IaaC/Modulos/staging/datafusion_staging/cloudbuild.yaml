@@ -4,5 +4,5 @@ steps:
     dir: 'IaaC/Modulos/datafusion_staging'
    
   - name: 'hashicorp/terraform:1.6.6'
-    args: ['apply', '-compact-warnings', '-auto-approve', '-var-file=../../Entornos/dev/main.tfvars']
+    args: ['apply', '-compact-warnings', '-auto-approve', '-var-file=../../../Entornos/dev/main.tfvars']
     dir: 'IaaC/Modulos/datafusion_staging'

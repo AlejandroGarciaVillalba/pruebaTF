@@ -12,3 +12,8 @@ variable "name_bucket_raw" {
   description = "Nombre del bucket raw"
   type        = string
 }
+
+variable "name_bucket_bronze" {
+  description = "Nombre del bucket en bronce"
+  type        = string
+}
