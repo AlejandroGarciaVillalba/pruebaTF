@@ -1,0 +1,130 @@
+{
+    "name": "ingestastaging",
+    "description": "Data Pipeline Application",
+    "artifact": {
+        "name": "cdap-data-pipeline",
+        "version": "6.9.2",
+        "scope": "SYSTEM"
+    },
+    "config": {
+        "resources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "driverResources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "connections": [
+            {
+                "from": "PostgreSQL",
+                "to": "GCS"
+            }
+        ],
+        "comments": [],
+        "postActions": [],
+        "properties": {},
+        "processTimingEnabled": true,
+        "stageLoggingEnabled": false,
+        "stages": [
+            {
+                "name": "PostgreSQL",
+                "plugin": {
+                    "name": "Postgres",
+                    "type": "batchsource",
+                    "label": "PostgreSQL",
+                    "artifact": {
+                        "name": "postgresql-plugin",
+                        "version": "1.10.2",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "referenceName": "rna",
+                        "importQuery": "SELECT * FROM \"rnacen\".\"rna\"",
+                        "numSplits": "1",
+                        "fetchSize": "1000",
+                        "connectionTimeout": "100",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id\",\"type\":[\"long\",\"null\"]},{\"name\":\"upi\",\"type\":[\"string\",\"null\"]},{\"name\":\"timestamp\",\"type\":[{\"type\":\"long\",\"logicalType\":\"timestamp-micros\"},\"null\"]},{\"name\":\"userstamp\",\"type\":[\"string\",\"null\"]},{\"name\":\"crc64\",\"type\":[\"string\",\"null\"]},{\"name\":\"len\",\"type\":[\"int\",\"null\"]},{\"name\":\"seq_short\",\"type\":[\"string\",\"null\"]},{\"name\":\"seq_long\",\"type\":[\"string\",\"null\"]},{\"name\":\"md5\",\"type\":[\"string\",\"null\"]}]}",
+                        "connection": "${conn(conexionpostgres)}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id\",\"type\":[\"long\",\"null\"]},{\"name\":\"upi\",\"type\":[\"string\",\"null\"]},{\"name\":\"timestamp\",\"type\":[{\"type\":\"long\",\"logicalType\":\"timestamp-micros\"},\"null\"]},{\"name\":\"userstamp\",\"type\":[\"string\",\"null\"]},{\"name\":\"crc64\",\"type\":[\"string\",\"null\"]},{\"name\":\"len\",\"type\":[\"int\",\"null\"]},{\"name\":\"seq_short\",\"type\":[\"string\",\"null\"]},{\"name\":\"seq_long\",\"type\":[\"string\",\"null\"]},{\"name\":\"md5\",\"type\":[\"string\",\"null\"]}]}"
+                    }
+                ],
+                "id": "PostgreSQL",
+                "type": "batchsource",
+                "label": "PostgreSQL",
+                "icon": "fa-plug",
+                "$$hashKey": "object:302",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "390px",
+                    "top": "177.6666717529297px"
+                }
+            },
+            {
+                "name": "GCS",
+                "plugin": {
+                    "name": "GCS",
+                    "type": "batchsink",
+                    "label": "GCS",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.22.2",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "referenceName": "depositardatosingesta",
+                        "path": "gs://staging_parvilla/",
+                        "suffix": "yyyy-MM-dd-HH-mm",
+                        "format": "csv",
+                        "location": "eu",
+                        "contentType": "text/csv",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id\",\"type\":[\"long\",\"null\"]},{\"name\":\"upi\",\"type\":[\"string\",\"null\"]},{\"name\":\"timestamp\",\"type\":[{\"type\":\"long\",\"logicalType\":\"timestamp-micros\"},\"null\"]},{\"name\":\"userstamp\",\"type\":[\"string\",\"null\"]},{\"name\":\"crc64\",\"type\":[\"string\",\"null\"]},{\"name\":\"len\",\"type\":[\"int\",\"null\"]},{\"name\":\"seq_short\",\"type\":[\"string\",\"null\"]},{\"name\":\"seq_long\",\"type\":[\"string\",\"null\"]},{\"name\":\"md5\",\"type\":[\"string\",\"null\"]}]}",
+                        "connection": "${conn(Cloud Storage Default)}",
+                        "writeHeader": "true"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id\",\"type\":[\"long\",\"null\"]},{\"name\":\"upi\",\"type\":[\"string\",\"null\"]},{\"name\":\"timestamp\",\"type\":[{\"type\":\"long\",\"logicalType\":\"timestamp-micros\"},\"null\"]},{\"name\":\"userstamp\",\"type\":[\"string\",\"null\"]},{\"name\":\"crc64\",\"type\":[\"string\",\"null\"]},{\"name\":\"len\",\"type\":[\"int\",\"null\"]},{\"name\":\"seq_short\",\"type\":[\"string\",\"null\"]},{\"name\":\"seq_long\",\"type\":[\"string\",\"null\"]},{\"name\":\"md5\",\"type\":[\"string\",\"null\"]}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "PostgreSQL",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id\",\"type\":[\"long\",\"null\"]},{\"name\":\"upi\",\"type\":[\"string\",\"null\"]},{\"name\":\"timestamp\",\"type\":[{\"type\":\"long\",\"logicalType\":\"timestamp-micros\"},\"null\"]},{\"name\":\"userstamp\",\"type\":[\"string\",\"null\"]},{\"name\":\"crc64\",\"type\":[\"string\",\"null\"]},{\"name\":\"len\",\"type\":[\"int\",\"null\"]},{\"name\":\"seq_short\",\"type\":[\"string\",\"null\"]},{\"name\":\"seq_long\",\"type\":[\"string\",\"null\"]},{\"name\":\"md5\",\"type\":[\"string\",\"null\"]}]}"
+                    }
+                ],
+                "id": "GCS",
+                "type": "batchsink",
+                "label": "GCS",
+                "icon": "fa-plug",
+                "$$hashKey": "object:303",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "690px",
+                    "top": "177.6666717529297px"
+                }
+            }
+        ],
+        "schedule": "0 1 */1 * *",
+        "engine": "spark",
+        "numOfRecordsPreview": 100,
+        "rangeRecordsPreview": {
+            "min": 1,
+            "max": "5000"
+        },
+        "description": "Data Pipeline Application",
+        "maxConcurrentRuns": 1,
+        "pushdownEnabled": false,
+        "transformationPushdown": {}
+    },
+    "version": "9d821e77-e50d-11ee-985f-ea8bbb0ee3cc"
+}
