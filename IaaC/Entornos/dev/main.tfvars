@@ -1,6 +1,6 @@
-id_project_platform = "pruebaparrondoyvillalba"
+id_project_platform = "platformparrvill"
 
-id_project_staging = "stagingparrondoyvillalba"
+id_project_staging = "realstagingparrvill"
 
 region = "europe-southwest1"
  
