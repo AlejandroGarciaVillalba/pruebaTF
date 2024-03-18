@@ -4,10 +4,10 @@ id_project_staging = "realstagingparrvill"
 
 region = "europe-southwest1"
  
-name_bucket_raw = "bucket_raw_parvill"
+name_bucket_raw = "bucket_raw_parrvilla"
 
-name_bucket_bronze = "bucket_bronze_parrvill"
+name_bucket_bronze = "bucket_bronze_parrvilla"
 
-name_bucket_staging = "bucket_stag_parrvill"
+name_bucket_staging = "bucket_stag_parrvilla"
 
-name_datafusion_staging = "datafusion-staging-parrvill"
+name_datafusion_staging = "datafusion-staging-parrvilla"
