@@ -9,5 +9,3 @@ name_bucket_raw = "bucket_raw_parrvilla"
 name_bucket_bronze = "bucket_bronze_parrvilla"
 
 name_bucket_staging = "bucket_stag_parrvilla"
-
-name_datafusion_staging = "datafusion-staging-parrvilla"

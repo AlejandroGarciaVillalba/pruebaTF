@@ -5,15 +5,7 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/storage/cloudbuild.yaml', '.']
-    id: 'staging_bucket'
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/datafusion_staging/cloudbuild.yaml', '.']
-    id: 'datafusion_staging'
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['data-fusion', 'pipelines', 'import', 'ingesta', '--instance', 'datafusion-staging-parrvill', '--location', 'europe-southwest1', '--file', 'Codigo/ingestastaging-cdap-data-pipeline.json']
-    id : 'import_pipeline'
+    id: 'staging_bucket' 
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/datasets/cloudbuild.yaml', '.']
