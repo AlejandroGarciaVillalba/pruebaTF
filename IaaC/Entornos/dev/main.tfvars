@@ -10,4 +10,4 @@ name_bucket_bronze = "bucket_bronze_parrvilla"
 
 name_bucket_staging = "bucket_stag_parrvilla"
 
-name_datafusion_staging = "datafusion_staging_parrvill"
+name_datafusion_staging = "datafusion-staging-parrvill"
