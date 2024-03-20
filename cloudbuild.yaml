@@ -10,3 +10,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/datasets/cloudbuild.yaml', '.']
     id: 'datasets'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/datafusion_staging/cloudbuild.yaml', '.']
+    id: 'datafusion_staging'
