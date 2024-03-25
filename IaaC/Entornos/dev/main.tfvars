@@ -12,4 +12,4 @@ name_bucket_staging = "bucket_stag_parrvilla"
 
 name_datafusion_staging = "datafusion-staging-parrvill"
 
-env_name = "comp_parrvill"
+env_name = "composerparrvill"
