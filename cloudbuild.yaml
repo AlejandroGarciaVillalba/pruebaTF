@@ -23,6 +23,7 @@ steps:
       - '-c'
       - |
         gcloud composer environments storage dags import \
-          --environment asdf \
+          --environment bronze_silver \
           --location europe-west3 \
           --source="Codigo/composer/bronze_silver.py"
+    id: 'composer'
