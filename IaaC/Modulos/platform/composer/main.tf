@@ -36,7 +36,6 @@ resource "google_composer_environment" "environment_creation" {
     node_config {
       network    = "default"
       subnetwork = "default"
-      service_account = var.service_account
     }
   }
 }

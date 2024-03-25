@@ -3,7 +3,8 @@ from datetime import datetime
 from airflow.providers.google.cloud.transfers.gcs_to_gcs import GCSToGCSOperator
 from airflow.operators.python_operator import PythonOperator
 import pandas as pd
-DAG_ID = "raw_bronze"
+
+DAG_ID = "raw-bronze"
 
 BUCKET_NAME_SRC = "bucket_raw_parrvilla"
 BUCKET_NAME_DST = "bucket_bronze_parrvilla"
@@ -29,8 +30,8 @@ with airflow.DAG(
      copy_single_file = GCSToGCSOperator(
         task_id="copy_single_gcs_file",
         source_bucket=BUCKET_NAME_SRC,
-        source_object=[OBJECT_DST],
+        source_object=[OBJECT_SRC],
         destination_bucket=BUCKET_NAME_DST,  # If not supplied the source_bucket value will be used
-        destination_object=OBJECT_DST,  # If not supplied the source_object value will be used
+        destination_object=[OBJECT_DST],  # If not supplied the source_object value will be used
     )
      delete_null_task >> copy_single_file
