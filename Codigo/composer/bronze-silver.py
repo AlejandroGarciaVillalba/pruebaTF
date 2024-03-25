@@ -5,7 +5,7 @@ from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQue
 from airflow.operators.python import BranchPythonOperator
 from airflow.operators.dummy import DummyOperator
  
-DAG_ID = "bronze_silver"
+DAG_ID = "bronze-silver"
 BUCKET_NAME_SRC = "bucket_bronze_parrvilla"
 OBJECT_SRC = "Clientes 1.csv"
 DATASET_NAME = "silver"
