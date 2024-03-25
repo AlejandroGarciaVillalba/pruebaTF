@@ -7,11 +7,22 @@ steps:
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/storage/cloudbuild.yaml', '.']
     id: 'staging_bucket' 
 
-  - name: 'gcr.io/cloud-builders/gcloud'
+  """- name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/datasets/cloudbuild.yaml', '.']
     id: 'datasets'
+  
 
-  """- name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/datafusion_staging/cloudbuild.yaml', '.']
     id: 'datafusion_staging'
-  """"
+  """
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud composer environments storage dags import \
+          --environment asdf \
+          --location europe-west3 \
+          --source="Codigo/composer/bronze_silver.py"
