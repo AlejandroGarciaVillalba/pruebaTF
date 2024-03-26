@@ -8,7 +8,6 @@ resource "google_bigquery_dataset" "dataset_silver" {
   friendly_name               = "silver"
   description                 = "Dataset silver format"
   location                    = var.region
-  default_table_expiration_ms = 3600000
 }
 
 resource "google_bigquery_dataset" "dataset_golden" {
@@ -16,5 +15,4 @@ resource "google_bigquery_dataset" "dataset_golden" {
   friendly_name               = "golden"
   description                 = "Dataset golden format"
   location                    = var.region
-  default_table_expiration_ms = 3600000
 }
