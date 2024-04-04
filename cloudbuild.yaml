@@ -16,17 +16,8 @@ steps:
   #   args: ['builds', 'submit', '--config', 'IaaC/Modulos/staging/datafusion_staging/cloudbuild.yaml', '.']
   #   id: 'datafusion_staging'
 
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/composer/cloudbuild.yaml', '.']
-  #   id: 'composer'
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['builds', 'submit', '--config', 'IaaC/Modulos/platform/composer/cloudbuild.yaml', '.']
+    id: 'composer'
 
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       gcloud composer environments storage dags import \
-  #         --environment comp_parrvill \
-  #         --location europe-west3 \
-  #         --source="Codigo/composer/bronze-silver.py"
-  #   id: 'import_bronze_silver'
+ 
