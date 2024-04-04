@@ -2,7 +2,10 @@ id_project_platform = "platformparrvill-417609"
 
 id_project_staging = "realstagingparrvill"
 
-region = "europe-west1"
+region = "europe-southwest1"
+
+region_dataset = "europe-west1"
+
 
 region_composer = "europe-southwest1"
  
