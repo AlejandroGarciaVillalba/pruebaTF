@@ -4,7 +4,7 @@ id_project_staging = "realstagingparrvill"
 
 region = "europe-southwest1"
 
-region_dataset = "europe-west1"
+region_dataset = "europe-southwest1"
 
 
 region_composer = "europe-southwest1"
