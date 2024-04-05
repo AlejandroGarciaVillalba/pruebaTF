@@ -1,11 +1,11 @@
 provider "google" {
   project     = var.id_project_platform
-  region      = var.region_composer
+  region      = var.region
 }
  
 resource "google_composer_environment" "environment_creation" {
   name   = var.env_name
-  region = var.region_composer
+  region = var.region
   config {
     software_config {
       image_version = "composer-2-airflow-2"

@@ -3,7 +3,7 @@ variable "id_project_platform" {
   type        = string
 }
  
-variable "region_composer" {
+variable "region" {
   description = "Región para despliegue"
   type        = string
 }

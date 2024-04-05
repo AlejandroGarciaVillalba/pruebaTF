@@ -3,11 +3,6 @@ id_project_platform = "platformparrvill-417609"
 id_project_staging = "realstagingparrvill"
 
 region = "europe-southwest1"
-
-region_dataset = "europe-southwest1"
-
-
-region_composer = "europe-southwest1"
  
 name_bucket_raw = "bucket_raw_parrvilla"
 
