@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud composer environments storage dags import \
+          --environment composerparrvill \
+          --location europe-southwest1 \
+          --source="Codigo/composer/*.py"

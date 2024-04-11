@@ -5,15 +5,15 @@ DAG_ID = "staging_raw"
 
 BUCKET_NAME_SRC = "bucket_stag_parrvilla"
 BUCKET_NAME_DST = "bucket_raw_parrvilla"
-OBJECT_SRC = "Clientes 1.csv"
+OBJECT_SRC = "adult.data.csv"
 
 with airflow.DAG(
     DAG_ID,
     schedule="0 0 1 * *",
-    start_date=datetime(2024, 3, 19),
+    start_date=datetime(2024, 4, 3),
 ) as dag:
      copy_single_file = GCSToGCSOperator(
-        task_id="copy_single_gcs_file",
+        task_id="copy_single_file",
         source_bucket=BUCKET_NAME_SRC,
         source_object=[OBJECT_SRC],
         destination_bucket=BUCKET_NAME_DST,  # If not supplied the source_bucket value will be used
