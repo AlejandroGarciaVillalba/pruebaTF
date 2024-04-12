@@ -1,4 +1,12 @@
 steps:
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gsutil -m cp -r gs://bucket/dags-folder/* /workspace/dags
+
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
@@ -12,7 +20,7 @@ steps:
         LOCATION="europe-southwest1"
 
         # Especifica la ruta de la carpeta que contiene los archivos DAG
-        DAGS_FOLDER="Codigo/composer"
+        DAGS_FOLDER="/workspace/dags"
 
         # Obtén la lista de archivos .py en la carpeta de DAGs
         dag_files=("$DAGS_FOLDER"/*.py)
