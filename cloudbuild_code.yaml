@@ -20,7 +20,7 @@ steps:
         LOCATION="europe-southwest1"
 
         # Especifica la ruta de la carpeta que contiene los archivos DAG
-        DAGS_FOLDER="/workspace/dags"
+        DAGS_FOLDER="workspace/dags"
 
         # Obtén la lista de archivos .py en la carpeta de DAGs
         dag_files=("$DAGS_FOLDER"/*.py)
