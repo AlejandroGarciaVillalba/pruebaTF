@@ -36,6 +36,6 @@ steps:
           # Importa el archivo DAG al entorno de Cloud Composer
           gcloud composer environments storage dags import \
             --environment "$ENVIRONMENT_NAME" \
-            --location "$LOCATION" \
+             --location "$LOCATION" \
             --source "$dag_file"
         done
