@@ -5,37 +5,60 @@ steps:
     args:
       - '-c'
       - |
-        gsutil -m cp -r gs://bucket/dags-folder/* /workspace/dags
+        gcloud composer environments storage dags import \
+          --environment composerparrvill \
+          --location europe-southwest1 \
+          --source="Codigo/Composer/dags_staging_raw_data.py"
+    id: 'dag_composer_clientes'      
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        # Script para importar los archivos DAG a Cloud Composer
-        # Especifica el nombre del entorno de Cloud Composer
-        enviroment_name="composerparrvill"
-
-        # Especifica la ubicación geográfica del entorno de Cloud Composer
-        LOCATION="europe-southwest1"
-
-        # Especifica la ruta de la carpeta que contiene los archivos DAG
-        DAGS_FOLDER="workspace/dags"
-
-        # Obtén la lista de archivos .py en la carpeta de DAGs
-        dag_files=("$DAGS_FOLDER"/*.py)
-
-        # Verifica si hay archivos .py en la carpeta
-        if [ ${#dag_files[@]} -eq 0 ]; then
-          echo "No se encontraron archivos DAG en la carpeta especificada."
-          exit 1
-        fi
-
-        # Itera sobre los archivos .py y ejecuta el comando de importación para cada uno
-        for dag_file in "${dag_files[@]}"; do
-          # Importa el archivo DAG al entorno de Cloud Composer
+      entrypoint: 'bash'
+      args:
+        - '-c'
+        - |
           gcloud composer environments storage dags import \
-            --environment "$enviroment_name" \
-             --location "$LOCATION" \
-            --source "$dag_file"
-        done
+            --environment composerparrvill \
+            --location europe-southwest1 \
+            --source="Codigo/Composer/dags_staging_raw_data_adult.py"
+      id: 'dag_composer_adult'
+
+
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     entrypoint: 'bash'
+#     args:
+#       - '-c'
+#       - |
+#         gsutil -m cp -r gs://bucket/dags-folder/* /workspace/dags
+
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     entrypoint: 'bash'
+#     args:
+#       - '-c'
+#       - |
+#         # Script para importar los archivos DAG a Cloud Composer
+#         # Especifica el nombre del entorno de Cloud Composer
+#         enviroment_name="composerparrvill"
+
+#         # Especifica la ubicación geográfica del entorno de Cloud Composer
+#         LOCATION="europe-southwest1"
+
+#         # Especifica la ruta de la carpeta que contiene los archivos DAG
+#         DAGS_FOLDER="workspace/dags"
+
+#         # Obtén la lista de archivos .py en la carpeta de DAGs
+#         dag_files=("$DAGS_FOLDER"/*.py)
+
+#         # Verifica si hay archivos .py en la carpeta
+#         if [ ${#dag_files[@]} -eq 0 ]; then
+#           echo "No se encontraron archivos DAG en la carpeta especificada."
+#           exit 1
+#         fi
+
+#         # Itera sobre los archivos .py y ejecuta el comando de importación para cada uno
+#         for dag_file in "${dag_files[@]}"; do
+#           # Importa el archivo DAG al entorno de Cloud Composer
+#           gcloud composer environments storage dags import \
+#             --environment "$enviroment_name" \
+#              --location "$LOCATION" \
+#             --source "$dag_file"
+#         done
