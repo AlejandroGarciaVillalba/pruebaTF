@@ -7,17 +7,17 @@ steps:
         gcloud composer environments storage dags import \
           --environment composerparrvill \
           --location europe-southwest1 \
-          --source="Codigo/composer/dags_staging_raw_data.py"   
-          
+          --source="Codigo/composer/dags_staging_raw_data.py"
+
   - name: 'gcr.io/cloud-builders/gcloud'
-      entrypoint: 'bash'
-      args:
-        - '-c'
-        - |
-          gcloud composer environments storage dags import \
-            --environment composerparrvill \
-            --location europe-southwest1 \
-            --source="Codigo/composer/dags_staging_raw_data_adult.py"
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud composer environments storage dags import \
+          --environment composerparrvill \
+          --location europe-southwest1 \
+          --source="Codigo/composer/dags_staging_raw_data_adult.py"   
 
 #   - name: 'gcr.io/cloud-builders/gcloud'
 #     entrypoint: 'bash'
